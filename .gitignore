@@ -1,0 +1,17 @@
+# --- Python Backend ---
+backend/venv/
+backend/__pycache__/
+*.pyc
+.env
+
+# --- React Frontend ---
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+.DS_Store
+
+# --- Firebase ---
+.firebase/
+firebase-debug.log
+backend/serviceAccountKey.jsonbackend1.1/serviceAccountKey.json
+backend1.1/serviceAccountKey.json

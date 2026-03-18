@@ -1,0 +1,19 @@
+# Data & API
+ccxt
+pandas
+numpy
+python-dotenv
+requests
+
+# Database
+firebase-admin
+
+# Machine Learning
+scikit-learn
+xgboost          # Untuk 15 menit
+tensorflow       # Untuk 1 jam (LSTM)
+prophet          # Untuk 1 minggu/bulan
+
+# Utilities
+schedule
+joblib           # Untuk save/load model XGBoost
