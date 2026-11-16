@@ -4,9 +4,12 @@ pandas
 numpy
 python-dotenv
 requests
+pytz
 
-# Database
-firebase-admin
+# Database and API
+psycopg2-binary
+fastapi
+uvicorn[standard]
 
 # Machine Learning
 scikit-learn

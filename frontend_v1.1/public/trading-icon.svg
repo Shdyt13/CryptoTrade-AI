@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="bullGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="bearGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fb7185" />
+      <stop offset="100%" stop-color="#e11d48" />
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="8" y1="48" x2="56" y2="12" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="2" />
+  <!-- Candlestick 1 (Bull) -->
+  <line x1="16" y1="26" x2="16" y2="52" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" />
+  <rect x="12" y="32" width="8" height="14" rx="2" fill="url(#bullGrad)" />
+  <!-- Candlestick 2 (Bear) -->
+  <line x1="31" y1="22" x2="31" y2="48" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round" />
+  <rect x="27" y="27" width="8" height="13" rx="2" fill="url(#bearGrad)" />
+  <!-- Candlestick 3 (Bull Breakout) -->
+  <line x1="46" y1="12" x2="46" y2="42" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" />
+  <rect x="42" y="17" width="8" height="18" rx="2" fill="url(#bullGrad)" />
+  <!-- Trend Arrow -->
+  <path d="M10 47 L25 36 L36 40 L54 14" stroke="url(#lineGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M46 14 H54 V22" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

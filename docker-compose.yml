@@ -1,0 +1,58 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: eth_predictor
+      POSTGRES_USER: eth_predictor
+      POSTGRES_PASSWORD: eth_predictor
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U eth_predictor -d eth_predictor"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./backend1.1
+    command: uvicorn api:app --host 0.0.0.0 --port 8000 --reload
+    environment:
+      DATABASE_URL: postgresql://eth_predictor:eth_predictor@postgres:5432/eth_predictor
+      CORS_ORIGINS: http://localhost,http://localhost:80,http://localhost:5173,http://127.0.0.1,http://127.0.0.1:80,http://127.0.0.1:5173
+    volumes:
+      - ./backend1.1:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  worker:
+    build:
+      context: ./backend1.1
+    command: python scheduler/main_runner.py
+    environment:
+      DATABASE_URL: postgresql://eth_predictor:eth_predictor@postgres:5432/eth_predictor
+    volumes:
+      - ./backend1.1:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend_v1.1
+      args:
+        VITE_API_URL: http://localhost:8000
+        VITE_WS_URL: ws://localhost:8000
+    volumes:
+      - ./frontend_v1.1/dist:/usr/share/nginx/html:ro
+      - ./frontend_v1.1/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
